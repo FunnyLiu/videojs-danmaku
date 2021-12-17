@@ -37,8 +37,31 @@
     player.on('resize', updateDisplayArea);
     player.on('fullscreenchange', updateDisplayArea);
 
-    commentLoader(options.src, cm);
+    // commentLoader(options.src, cm);
+    // 文档在这里：https://github.com/jabbany/CommentCoreLibrary/blob/master/docs/Tutorial.zh_CN.md
+    // 载入弹幕列表
+    var danmakuList = [
+      {
+          "mode":1,
+          "text":"Hello World",
+          "stime":0,
+          "size":40,
+          "color":0xffffff
+      }
+    ];
+    cm.load(danmakuList);
 
+    setTimeout(()=>{
+      // 插入弹幕
+      var someDanmakuAObj = {
+        "mode":1,
+        "text":"Hello CommentCoreLibrary",
+        "stime":1000,
+        "size":30,
+        "color":0xff0000
+      };
+      cm.insert(someDanmakuAObj);
+    }, 3000)
 
     /******************************
      *  Visibility Toggle Button
